@@ -26,7 +26,7 @@ export class PasswordStrengthComponent {
   }
 
   isEasy(): boolean{
-    return this.hasDigits() || this.hasLetters() || this.hasSymbols();
+    return (this.hasDigits() || this.hasLetters() || this.hasSymbols())&&!this.isSmall();
   }
 
   isMedium(): boolean {
@@ -34,11 +34,11 @@ export class PasswordStrengthComponent {
       (this.hasLetters() && this.hasSymbols()) ||
       (this.hasLetters() && this.hasDigits()) ||
       (this.hasDigits() && this.hasSymbols())
-    );
+    )&&!this.isSmall();
   }
 
   isStrong(): boolean {
-    return this.hasLetters() && this.hasDigits() && this.hasSymbols();
+    return this.hasLetters() && this.hasDigits() && this.hasSymbols()&&!this.isSmall();
   }
 
   updatePasswordStrength(): void {
